@@ -1,0 +1,83 @@
+.overallFirstDiv {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.linkStyle {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+.firstDivImg {
+  width: 20px;
+  color: #d6d4d4;
+}
+.spanStyle {
+  color: #c4c4c4;
+}
+.continueBtn {
+  padding: 5px 30px;
+  background-color: #ffcc21;
+  border: none;
+  margin-top: 25px;
+}
+.newCustomerContainer {
+  width: 30%;
+  border: 1px solid #d0e187;
+  border-radius: 13px;
+  padding: 10px 18px;
+  float: left;
+  margin-right: 40px;
+}
+h4 {
+  text-transform: uppercase;
+}
+hr {
+  margin: 0;
+}
+.returningCustomerContainer {
+  width: 35%;
+  border: 1px solid #d0e187;
+  border-radius: 13px;
+  padding: 10px 18px;
+  float: left;
+  margin-right: 40px;
+}
+.inputStyle {
+  background-color: #f8f8f8;
+  padding: 23px 0;
+}
+.requriedSpan {
+  color: red;
+}
+.LinkStyle {
+  text-decoration: none;
+  color: black;
+}
+.AccountSettingsContainer {
+  width: 25%;
+  border-radius: 13px;
+  padding: 10px 18px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  float: left;
+  margin-right: 40px;
+}
+.overallContent {
+  max-width: 1200px;
+  margin: auto;
+}
+.liStyle {
+  list-style: none;
+  padding: 10px 0;
+}
+.overallContainer {
+  float: left;
+  width: 100%;
+  padding: 70px 0;
+}
+/* 600 for mobile 
+768 for tablet
+992 for laptop
+1200 for largescreens */
+@media only screen and (max-width: 600px) {
+}

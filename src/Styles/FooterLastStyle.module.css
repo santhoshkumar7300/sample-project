@@ -1,0 +1,23 @@
+.content {
+  color: #c9c7c7;
+  margin: 0;
+  align-self: center;
+  padding-right: 13px;
+}
+.footerImg {
+  width: 30px;
+  margin-right: 20px;
+}
+.overallFooterLast {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .footerImg {
+    width: 25px;
+  }
+  .overallFooterLast {
+    font-size: 11px;
+  }
+}

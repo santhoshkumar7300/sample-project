@@ -1,0 +1,56 @@
+.overall {
+  background: #d0e187 url("../images/footerBg.png") no-repeat;
+  padding: 45px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.mblImgStyle {
+  width: 600px;
+  padding-left: 50px;
+  padding-top: 25px;
+}
+.btnStyle {
+  border: none;
+  background-color: white;
+  padding: 10px 40px;
+  border-radius: 5px;
+}
+.googleBtn {
+  border: none;
+  margin-left: 25px;
+}
+.googleBtnImg {
+  width: 150px;
+}
+.footerSecondDiv {
+  width: 32%;
+}
+@media only screen and (max-width: 600px) {
+  .overall {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footerSecondDiv {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+  }
+  .overImg {
+    text-align: center;
+  }
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .overall {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footerSecondDiv {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+  }
+  .overImg {
+    text-align: center;
+  }
+}

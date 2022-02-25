@@ -1,0 +1,52 @@
+.firstDivImg {
+  width: 20px;
+  color: #d6d4d4;
+}
+.linkStyle {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+.spanStyle {
+  color: #c4c4c4;
+}
+.overallFirstDiv {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.h4Style {
+  background-color: #f8f8f8;
+  padding: 12px 0;
+}
+.sideMenuDiv {
+  width: 17%;
+}
+li {
+  font-size: 15px;
+}
+.rightHeader {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.rightDropdownDiv {
+  width: 64%;
+}
+select {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  padding: 2px 0;
+}
+.overall {
+  display: flex;
+  max-width: 1400px;
+  margin: auto;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+.labelStyle {
+  padding: 0 9px;
+}

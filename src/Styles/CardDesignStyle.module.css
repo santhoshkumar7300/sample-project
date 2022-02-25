@@ -1,0 +1,70 @@
+.cardStyle {
+  width: 280px;
+  margin-right: 9px;
+  float: left;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-left: 9px;
+  position: relative;
+}
+.cardStyle:hover {
+  border: 1px solid #18cf37;
+}
+.cardStyle:hover .hoverBottomDiv {
+  display: flex;
+}
+.cardStyle:hover .HeartImgDiv {
+  display: flex;
+}
+.cardStyle:hover .cardRateHover {
+  display: none;
+}
+.hoverHeart {
+  width: 18px;
+}
+.HeartImgDiv {
+  width: 35px;
+  height: 35px;
+  background-color: #ffcc21;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: none;
+}
+.tableQtyDiv {
+  width: 100px;
+  background: #efefef;
+  display: flex;
+  justify-content: space-evenly;
+}
+.tableQtyBtnStyle {
+  background: #efefef;
+  border: none;
+  width: 20px;
+  height: 30px;
+  align-self: center;
+}
+.addCartBtnStyle {
+  border: none;
+  background-color: #ffcc21;
+  padding: 7px 25px;
+  border-radius: 5px;
+  height: 34px;
+}
+.hoverBottomDiv {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  display: none;
+  height: 33px;
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .topContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

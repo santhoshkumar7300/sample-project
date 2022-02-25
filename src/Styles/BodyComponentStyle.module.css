@@ -1,0 +1,44 @@
+.titleDesign {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+.overallContainer {
+  width: 100%;
+  float: left;
+  padding: 50px 0;
+}
+.titleDiv {
+  display: flex;
+  justify-content: center;
+}
+.cardDiv {
+  display: flex;
+  justify-content: center;
+}
+.btnStyle {
+  border: none;
+  background-color: #ffcc21;
+  padding: 10px 30px;
+}
+.btnDIv {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+.hrStyle {
+  margin: auto;
+  width: 200px;
+  opacity: 1;
+  height: 1px !important;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .titleDesign {
+    width: 100%;
+  }
+}

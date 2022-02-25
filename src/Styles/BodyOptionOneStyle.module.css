@@ -1,0 +1,71 @@
+.overallContainer {
+  width: 38%;
+  display: flex;
+  background-color: #f2f2f2;
+  padding: 20px 26px;
+  margin-left: 25px;
+  margin-top: 25px;
+  border-radius: 15px;
+  height: 250px;
+}
+.btnStyle {
+  background-color: #ffcc21;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 22px;
+}
+.ParaStyle {
+  margin: 0;
+  width: 100%;
+  font-size: 30px;
+}
+.bodyImgStyle {
+  width: 205px;
+  height: 159px;
+  align-self: center;
+}
+.btnDiv {
+  width: 100%;
+  padding-top: 18px;
+}
+.leftContainer {
+  width: 50%;
+  padding-left: 27px;
+  align-self: center;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  float: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .overallContainer {
+    width: 100%;
+    margin: 20px;
+    justify-content: center;
+  }
+  .leftContainer {
+    align-self: center;
+  }
+  .bodyImgStyle {
+    align-self: center;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .overallContainer {
+    width: 100%;
+    margin: 20px;
+    justify-content: center;
+    height: 199px;
+  }
+  .leftContainer {
+    align-self: center;
+  }
+  .bodyImgStyle {
+    align-self: center;
+  }
+}

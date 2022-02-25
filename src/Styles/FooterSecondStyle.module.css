@@ -1,0 +1,81 @@
+.overallFooterSecond {
+  display: flex;
+  padding: 50px 0;
+  justify-content: space-around;
+}
+.leftTitle {
+  text-transform: uppercase;
+}
+.leftPara {
+  margin: 0;
+  padding-left: 10px;
+  font-size: 13px;
+}
+.leftContentDiv {
+  display: flex;
+}
+.leftLogo {
+  padding: 15px 0;
+}
+.overallLeftDiv {
+  width: 22%;
+}
+li {
+  list-style: none;
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+.rightContentOverallDiv {
+  width: 65%;
+  display: flex;
+  justify-content: space-around;
+}
+ul {
+  padding-left: 0;
+}
+.hrStyle {
+  margin: auto;
+  width: 90%;
+  opacity: 1;
+  height: 1px !important;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  float: left;
+}
+.hrDiv {
+  display: flex;
+  justify-content: center;
+}
+.linkStyle {
+  text-decoration: none;
+  color: black;
+}
+@media only screen and (max-width: 600px) {
+  .overallLeftDiv {
+    width: 71%;
+    float: left;
+    padding-left: 25px;
+  }
+  .overallFooterSecond {
+    display: block;
+  }
+  .rightContentOverallDiv {
+    width: 100%;
+    padding: 16px 15px;
+  }
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .overallLeftDiv {
+    width: 71%;
+    float: left;
+    padding-left: 25px;
+  }
+  .overallFooterSecond {
+    display: block;
+  }
+  .rightContentOverallDiv {
+    width: 100%;
+    padding: 16px 15px;
+  }
+}

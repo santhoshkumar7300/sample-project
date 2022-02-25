@@ -1,0 +1,252 @@
+.firstDiv {
+  background-color: #e6e5e3;
+  width: 100%;
+  display: flex;
+}
+.spanDIv {
+  width: 15%;
+  display: flex;
+}
+.marqueeDiv {
+  width: 68%;
+  display: flex;
+}
+.rightDiv {
+  display: flex;
+}
+.lastDiv {
+  width: 15%;
+  display: flex;
+  justify-content: end;
+}
+.rightDivSpan {
+  align-self: center;
+}
+.logoDiv {
+  display: flex;
+}
+.buttonStyle {
+  background-color: white;
+  border: none;
+  align-self: center;
+}
+.cartSpanStyle {
+  background-color: green;
+  border-radius: 50%;
+  color: white;
+  margin-top: -17px;
+  align-self: center;
+  margin-left: -14px;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+}
+.cartImgDiv {
+  width: 50px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+}
+.logoImgDiv {
+  width: 25%;
+  display: flex;
+  padding: 10px 15px;
+  padding-left: 37px;
+}
+.contentDiv {
+  justify-content: end;
+  display: flex;
+  width: 71%;
+}
+.contentInnerDiv {
+  display: flex;
+  justify-content: end;
+  width: 46%;
+}
+.contentDivMenu {
+  justify-content: end;
+  display: flex;
+  width: 71%;
+}
+.contentInnerDivMenu {
+  display: flex;
+  justify-content: end;
+  width: 43%;
+}
+.headerThirdDiv {
+  background-color: #00a44e;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+}
+.searchImgStyle {
+  width: 25px;
+}
+.searhBtnStyle {
+  padding: 0px 25px;
+  background-color: #ffcc21;
+  border: none;
+  width: 100%;
+  height: 31px;
+  object-fit: contain;
+  border-radius: 0px 25px 25px 0px;
+}
+.searchBoxContainer {
+  width: 70%;
+  display: flex;
+  border-radius: 15px;
+  align-self: center;
+}
+.searchBoxProducts {
+  width: 15%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px 0px 0px 25px;
+  height: 31px;
+}
+.searchBox {
+  width: 70%;
+  height: 31px;
+  object-fit: contain;
+}
+.searchBoxBtn {
+  width: 15%;
+  height: 31px;
+  object-fit: contain;
+}
+input {
+  width: 100%;
+  border: none;
+  height: 31px;
+  object-fit: contain;
+}
+.specialOfferDiv {
+  align-self: center;
+  width: 14%;
+  display: flex;
+  justify-content: end;
+  font-size: 25px;
+  color: white;
+  text-transform: uppercase;
+}
+.overallSecondDiv {
+  position: sticky;
+  top: 0;
+}
+.menu {
+  display: none;
+}
+.ParentMenu {
+  width: 75%;
+  display: flex;
+  justify-content: end;
+  padding-right: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logoDiv {
+    width: unset;
+  }
+  .marqueeDiv {
+    width: 100%;
+    float: left;
+    padding: 0 25px;
+  }
+  .customerNum {
+    display: none;
+  }
+  .firstDiv {
+    display: block;
+  }
+  .rightDiv {
+    display: flex;
+    justify-content: end;
+    padding-right: 25px;
+  }
+  .lastDiv {
+    width: 100%;
+  }
+  .specialOfferDiv {
+    display: none;
+  }
+  .contentDivMenu {
+    width: 100%;
+    float: left;
+  }
+  .contentInnerDivMenu {
+    width: 100%;
+    display: block;
+  }
+  .contentInnerDiv {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+  .searchBoxContainer {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .searchName {
+    display: none;
+  }
+  .contentDiv {
+    width: unset;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .ParentMenu {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .marqueeDiv {
+    width: 100%;
+    float: left;
+    padding: 0 25px;
+  }
+  .customerNum {
+    display: none;
+  }
+  .firstDiv {
+    display: block;
+  }
+  .rightDiv {
+    display: flex;
+    justify-content: end;
+    padding-right: 25px;
+  }
+  .lastDiv {
+    width: 100%;
+  }
+  .specialOfferDiv {
+    display: none;
+  }
+  .contentDivMenu {
+    width: 100%;
+    float: left;
+  }
+  .contentInnerDivMenu {
+    width: 100%;
+    display: block;
+  }
+  .contentInnerDiv {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+  .searchBoxContainer {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .searchName {
+    display: none;
+  }
+  .contentDiv {
+    width: unset;
+  }
+}

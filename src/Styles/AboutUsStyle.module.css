@@ -1,0 +1,150 @@
+.overallFirstDiv {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.linkStyle {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+.firstDivImg {
+  width: 20px;
+  color: #d6d4d4;
+}
+.spanStyle {
+  color: #c4c4c4;
+}
+.firstContentDiv {
+  max-width: 1170px;
+  margin: auto;
+}
+.firstContentImgDiv {
+  text-align: center !important;
+}
+.firstContentImg {
+  width: 90px;
+}
+.h4Style {
+  text-align: center;
+}
+.paraStyle {
+  text-align: center;
+}
+.overallFirstContentDiv {
+  background: #f8f8f8;
+  float: left;
+  width: 100%;
+  padding: 70px 0;
+}
+.overallSecondContentDiv {
+  float: left;
+  width: 100%;
+  padding: 60px 0;
+}
+.secondContentDiv {
+  max-width: 1170px;
+  margin: auto;
+}
+.secondContentLeft {
+  width: 65%;
+  float: left;
+}
+.secondContentPara {
+  font-size: 15px;
+}
+.hrStyle {
+  width: 200px;
+  opacity: 1;
+  height: 1px !important;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.secondContentRight {
+  width: 290px;
+  margin-left: 40px;
+}
+.overallThirdContentDiv {
+  background: #d0e187;
+  float: left;
+  width: 100%;
+  padding: 70px 0;
+  text-align: center;
+}
+.hrStyleThirdContent {
+  width: 200px;
+  opacity: 1;
+  height: 1px !important;
+  background: #fff;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  margin: auto;
+}
+.ThirdContentDiv {
+  max-width: 1170px;
+  margin: auto;
+}
+.thirdMapContent {
+  background-color: #fff;
+  width: calc(33% - 24px);
+  border-radius: 16px;
+  padding: 10px;
+  height: 300px;
+  float: right;
+  margin-right: 26px;
+}
+.thirdMapContentPara {
+  font-size: 15px;
+}
+.thirdMapContentImg {
+  padding-bottom: 10px;
+}
+.overallFourthContentDiv {
+  float: left;
+  width: 100%;
+  padding: 70px 0;
+  text-align: center;
+}
+.hrStyleFourthContent {
+  width: 200px;
+  opacity: 1;
+  height: 1px !important;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  margin: auto;
+}
+.FourthContentDiv {
+  max-width: 1170px;
+  margin: auto;
+}
+.overallFifthContentDiv {
+  float: left;
+  width: 100%;
+  padding: 70px 0;
+  text-align: center;
+}
+.FifthContentDiv {
+  max-width: 1170px;
+  margin: auto;
+}
+.hrStyleFifthContent {
+  width: 200px;
+  opacity: 1;
+  height: 1px !important;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  margin: auto;
+}
+.teamDiv {
+  border: #d0e187 1px solid;
+  margin-top: 25px;
+  border-radius: 5px;
+  padding: 15px;
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-right: 20px;
+}

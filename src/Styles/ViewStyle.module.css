@@ -1,0 +1,104 @@
+.h4Style {
+  background-color: #f8f8f8;
+  padding: 12px 0;
+}
+.sideMenuDiv {
+  width: 20%;
+  float: left;
+}
+.overall {
+  display: flex;
+  max-width: 1400px;
+  margin: auto;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+.img {
+  width: 38%;
+  border: 1px solid #d0e187;
+  border-radius: 6px;
+  float: left;
+}
+.imgDiv {
+  width: 80%;
+  float: left;
+}
+.overallViewDiv {
+  width: 100%;
+  float: left;
+}
+.rightContentDiv {
+  width: 62%;
+  float: right;
+  padding-left: 15px;
+}
+.rightContentSecondDiv {
+  padding: 15px 0;
+}
+.h5Style {
+  padding-top: 5px 0;
+}
+.hrStyle {
+  margin-top: 20px;
+}
+.h2Style {
+  margin: 0;
+  padding: 15px 0;
+}
+.topSpan {
+  font-size: 20px;
+  font-weight: bold;
+}
+.tableQtyDiv {
+  width: 90px;
+  height: 40px;
+  background: #efefef;
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+  margin-left: 20px;
+}
+.tableQtyBtnStyle {
+  background: #efefef;
+  border: none;
+  width: 20px;
+  height: 40px;
+}
+.qtySpan {
+  float: left;
+  align-self: center;
+}
+.updateBtn {
+  text-align: center;
+  background: #ffcc21 !important;
+  color: #000;
+  border-radius: 5px;
+  padding: 7px 23px;
+  border: none !important;
+  margin-left: 15px;
+  float: left;
+}
+.heartImg {
+  width: 20px;
+}
+.heartDiv {
+  float: left;
+  align-self: center;
+  padding-left: 20px;
+}
+.wishlistSpan {
+  float: left;
+  align-self: center;
+  padding-left: 16px;
+}
+.rightOverallSecondDiv {
+  float: left;
+  width: 100%;
+  padding: 15px 5px;
+  display: flex;
+}
+.shareIcons {
+  width: 25px;
+  float: left;
+  margin-left: 20px;
+}
