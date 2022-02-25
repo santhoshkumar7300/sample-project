@@ -37,6 +37,7 @@ export default function View() {
     "Rain Hose & Fittings / 63 mm",
   ];
   console.log("santhosh");
+  console.log("boopathi");
   return (
     <div className={Styles.overallViewDiv}>
       {/* Left Side */}
