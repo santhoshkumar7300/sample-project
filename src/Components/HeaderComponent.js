@@ -22,8 +22,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function HeaderComponent() {
-  let add_to_cart = useSelector((state) => state.cardDetails);
-  console.log(add_to_cart.length);
+  let CartCount = useSelector((state) => state.cartCount);
+  console.log(CartCount);
 
   const ProductList = [
     "Rain Hose / Rain Pipe",
@@ -226,9 +226,8 @@ export default function HeaderComponent() {
                                     src={cartIcon}
                                     alt="cartlogo"
                                   ></img>
-                                  {console.log(add_to_cart.length)}
                                   <span className={Styles.cartSpanStyle}>
-                                    1
+                                    0
                                   </span>
                                 </div>
                                 <Link
@@ -306,7 +305,7 @@ export default function HeaderComponent() {
                           alt="cartlogo"
                         ></img>
                         <span className={Styles.cartSpanStyle}>
-                          {add_to_cart.length}
+                          {CartCount}
                         </span>
                       </div>
                       <Link

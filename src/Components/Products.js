@@ -2,113 +2,28 @@ import { Link } from "react-router-dom";
 import Styles from "../Styles/ProductsStyle.module.css";
 import rightArrow from "../images/rightArrow.png";
 import cardImg from "../images/card.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardDesign from "./CardDesign";
+import { productlist } from "../Api/ApiData";
 
 export default function Products() {
-  const [productData, setProductData] = useState([
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-    {
-      cardimg: cardImg,
-      cardTitle: "Rain Hose -350 / 40 mm / 100 Meter",
-      cardRate: "₹1500.00",
-    },
-  ]);
+  const [productData, setProductData] = useState([]);
 
+  useEffect(() => {
+    let formdata = new FormData();
+    formdata.append("unique_id", "1234567890");
+    productlist(formdata)
+      .then((res) => {
+        if (res.data.status === 1) {
+          setProductData(res.data.product_list);
+        } else {
+          alert(res.data.msg);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const ProductList = [
     "All Products",
     "Rain Hose / Rain Pipe",

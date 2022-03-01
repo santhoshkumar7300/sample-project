@@ -1,0 +1,12 @@
+.loaderParent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+}
+.loaderChild {
+  align-self: center;
+}

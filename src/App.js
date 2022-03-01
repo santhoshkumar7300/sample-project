@@ -15,6 +15,9 @@ import RouterHome from "./HomeComponent/RouterHome";
 import Check from "./check";
 import View from "./Components/View";
 import HeaderComponent from "./Components/HeaderComponent";
+import SignUp from "./Components/SignUp";
+import OTP_Verification from "./Components/OTP_Verification";
+import Loader from "./Loader/Loader";
 
 function App() {
   return (
@@ -27,6 +30,8 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/product" element={<Products />} />
           <Route path="/view" element={<View />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/otp_verification" element={<OTP_Verification />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

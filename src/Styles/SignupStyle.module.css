@@ -1,0 +1,111 @@
+.overallFirstDiv {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.linkStyle {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+.firstDivImg {
+  width: 20px;
+  color: #d6d4d4;
+}
+.spanStyle {
+  color: #c4c4c4;
+}
+.totalBodyDiv {
+  width: 100%;
+  float: left;
+  padding: 50px 0;
+}
+.leftBodyDiv {
+  width: 60%;
+  float: left;
+  border: 1px solid #d0e187;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin-right: 50px;
+}
+.formDiv {
+  width: 100%;
+  float: left;
+}
+.formInputLabelDiv {
+  width: 50%;
+  float: left;
+  padding: 10px 16px;
+}
+.formOverallDiv {
+  display: block;
+  width: 100%;
+  float: left;
+}
+.inputStyle {
+  border: none;
+  background-color: #f8f8f8;
+  padding: 20px 10px;
+}
+.formSpanStyle {
+  color: red;
+}
+.hrStyle {
+  width: 100%;
+  float: left;
+  color: #d0e187;
+  margin: 10px 0 10px 0;
+}
+.paraStyle {
+  margin-top: 6px;
+}
+.checkLabel {
+  float: left;
+  width: 98%;
+  font-size: 13px;
+  align-self: center;
+  padding-left: 10px;
+}
+.inputCheck {
+  width: unset;
+  float: left;
+}
+.checkDiv {
+  width: 100%;
+  float: left;
+  margin-left: 15px;
+}
+.btnStyle {
+  text-align: center;
+  background: #ffcc21 !important;
+  color: #000;
+  border-radius: 5px;
+  padding: 7px 23px;
+  border: none !important;
+  margin: 25px 0 13px 25px;
+  width: unset;
+}
+.AccountSettingsContainer {
+  width: 25%;
+  border-radius: 13px;
+  padding: 10px 18px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  float: left;
+  margin-right: 40px;
+}
+.liStyle {
+  list-style: none;
+  padding: 10px 0;
+}
+.LinkStyle {
+  text-decoration: none;
+  color: black;
+}
+.childContainer {
+  max-width: 1300px;
+  margin: auto;
+}
+.error {
+  font-size: 12px;
+  color: red;
+}

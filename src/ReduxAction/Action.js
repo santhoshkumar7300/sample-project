@@ -4,3 +4,16 @@ export const setCart = (data) => {
     data: data,
   };
 };
+export const setCartCount = (data) => {
+  console.log(data, "cart count data");
+  return {
+    type: "CART_COUNT",
+    data: data,
+  };
+};
+export const signupMsg = (data) => {
+  return {
+    type: "SIGN_UP",
+    data: data,
+  };
+};

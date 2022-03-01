@@ -77,7 +77,7 @@ export default function MyAccount() {
                 </Link>
               </li>
               <li className={Styles.liStyle}>
-                <Link className={Styles.LinkStyle} to="/signIn">
+                <Link className={Styles.LinkStyle} to="/signup">
                   Sign Up
                 </Link>
               </li>

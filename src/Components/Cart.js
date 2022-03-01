@@ -4,13 +4,27 @@ import rightArrow from "../images/rightArrow.png";
 import CloseIcon from "../images/close_icon.svg";
 import checkIcon from "../images/check_circle.svg";
 import tableImage from "../images/tableImage.jpg";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addtocart, cartlist } from "../Api/ApiData";
+import { setCart } from "../ReduxAction/Action";
 export default function Cart() {
   const [count, setCount] = useState(1);
-
+  let dispatch = useDispatch();
   let selector = useSelector((state) => state.cardDetails);
-  console.log(selector);
+  console.log(selector, "cart");
+
+  useEffect(() => {
+    let formdata = new FormData();
+    formdata.append("unique_id", "123456");
+    cartlist(formdata)
+      .then((res) => {
+        dispatch(setCart(res));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const add_num_handle = () => {
     setCount(count + 1);
@@ -59,46 +73,47 @@ export default function Cart() {
                   </tr>
                 </thead>
 
-                {selector.map((e, index) => (
-                  <tbody>
-                    <tr>
-                      <td className={Styles.firstTableData}>
-                        <img src={CloseIcon} alt="close"></img>
-                        <img
-                          className={Styles.tableImageStyle}
-                          src={e.cardimg}
-                          alt="product-image"
-                        ></img>
-                        <span className={Styles.tableSpanStyle}>
-                          {e.cardTitle}
-                        </span>
-                      </td>
-                      <td style={{ paddingLeft: "20px" }}>
-                        <span>{e.cardRate}</span>
-                      </td>
-                      <td>
-                        <div className={Styles.tableQtyDiv}>
-                          <button
-                            onClick={minus_num_handle}
-                            className={Styles.tableQtyBtnStyle}
-                          >
-                            -
-                          </button>
-                          <span style={{ alignSelf: "center" }}>{count}</span>
-                          <button
-                            onClick={add_num_handle}
-                            className={Styles.tableQtyBtnStyle}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </td>
-                      <td style={{ paddingLeft: "20px" }}>
-                        <span>₹3900.00</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                ))}
+                {selector &&
+                  selector.map((e, index) => (
+                    <tbody>
+                      <tr>
+                        <td className={Styles.firstTableData}>
+                          <img src={CloseIcon} alt="close"></img>
+                          <img
+                            className={Styles.tableImageStyle}
+                            src={e.cardimg}
+                            alt="product-image"
+                          ></img>
+                          <span className={Styles.tableSpanStyle}>
+                            {e.cardTitle}
+                          </span>
+                        </td>
+                        <td style={{ paddingLeft: "20px" }}>
+                          <span>{e.cardRate}</span>
+                        </td>
+                        <td>
+                          <div className={Styles.tableQtyDiv}>
+                            <button
+                              onClick={minus_num_handle}
+                              className={Styles.tableQtyBtnStyle}
+                            >
+                              -
+                            </button>
+                            <span style={{ alignSelf: "center" }}>{count}</span>
+                            <button
+                              onClick={add_num_handle}
+                              className={Styles.tableQtyBtnStyle}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </td>
+                        <td style={{ paddingLeft: "20px" }}>
+                          <span>₹3900.00</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
               </table>
             </div>
 
