@@ -14,6 +14,7 @@ export default function Cart() {
   let selector = useSelector((state) => state.cardDetails);
   let dispatch = useDispatch();
   const [list, setList] = useState([]);
+  const [showbill, setShowbill] = useState(true);
   const deleteHandle = (data) => {
     let formdata = new FormData();
     formdata.append("unique_id", "1234567890");
@@ -44,6 +45,7 @@ export default function Cart() {
   }, []);
 
   const EmptyCartHandle = () => {
+    setShowbill(false);
     let formdata = new FormData();
     formdata.append("unique_id", "1234567890");
     emptyCart(formdata)
@@ -81,62 +83,65 @@ export default function Cart() {
               Empty Cart
             </button>
           </div>
-          <div className={Styles.totalContentContainer}>
-            <div className={Styles.tableContainer}>
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ textAlign: "unset" }}>Product</th>
-                    <th style={{ textAlign: "unset" }}>Price</th>
-                    <th style={{ textAlign: "unset" }}>Qty</th>
-                    <th style={{ textAlign: "unset" }}>Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selector &&
-                    selector.map((e, index) => (
-                      <CartTableData e={e} deleteHandle={deleteHandle} />
-                    ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className={Styles.overallSecondDiv}>
-              <div className={Styles.resultSpanDiv}>
-                <span>Cart Totals</span>
+          {showbill ? (
+            <div className={Styles.totalContentContainer}>
+              <div className={Styles.tableContainer}>
+                <table>
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: "unset" }}>Product</th>
+                      <th style={{ textAlign: "unset" }}>Price</th>
+                      <th style={{ textAlign: "unset" }}>Qty</th>
+                      <th style={{ textAlign: "unset" }}>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selector &&
+                      selector.map((e, index) => (
+                        <CartTableData e={e} deleteHandle={deleteHandle} />
+                      ))}
+                  </tbody>
+                </table>
               </div>
-              <div className={Styles.resultContainer}>
-                <div className={Styles.resultDetailsDiv}>
-                  {list.map((e, index) => (
-                    <div>
-                      {index === 1 ? (
-                        <div className={Styles.resultDetailsDiv}>
-                          <div>
-                            <span>Shipping</span>
-                            <p style={{ margin: "0" }}>
-                              <img src={checkIcon} alt="check"></img>
-                              <span>Free Shipping</span>
-                            </p>
+              <div className={Styles.overallSecondDiv}>
+                <div className={Styles.resultSpanDiv}>
+                  <span>Cart Totals</span>
+                </div>
+                <div className={Styles.resultContainer}>
+                  <div className={Styles.resultDetailsDiv}>
+                    {list.map((e, index) => (
+                      <div>
+                        {index === 1 ? (
+                          <div className={Styles.resultDetailsDiv}>
+                            <div>
+                              <span>Shipping</span>
+                              <p style={{ margin: "0" }}>
+                                <img src={checkIcon} alt="check"></img>
+                                <span>Free Shipping</span>
+                              </p>
+                            </div>
+                            <hr></hr>
                           </div>
-                          <hr></hr>
-                        </div>
-                      ) : null}
-                      <span className={Styles.resultSpan}>
-                        {e.title} <span>{e.value}</span>
-                      </span>
-                      <hr></hr>
-                    </div>
-                  ))}
-                </div>
-                <button className={Styles.resultBtn}>
-                  Proceed to Checkout
-                </button>
-                <div className={Styles.linkDiv}>
-                  <Link to="/">Continue To Shopping</Link>
+                        ) : null}
+                        <span className={Styles.resultSpan}>
+                          {e.title} <span>{e.value}</span>
+                        </span>
+                        <hr></hr>
+                      </div>
+                    ))}
+                  </div>
+                  <button className={Styles.resultBtn}>
+                    Proceed to Checkout
+                  </button>
+                  <div className={Styles.linkDiv}>
+                    <Link to="/">Continue To Shopping</Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className={Styles.emptyCart}>Empty Cart</div>
+          )}
         </div>
       </div>
     </div>

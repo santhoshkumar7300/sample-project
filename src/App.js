@@ -19,25 +19,34 @@ import SignUp from "./Components/SignUp";
 import OTP_Verification from "./Components/OTP_Verification";
 import Loader from "./Loader/Loader";
 import Update from "./update";
+import Gallery from "./Components/Gallery";
+import { createContext } from "react";
+
+export const AuthContext = createContext();
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<RouterHome />}>
-          <Route index element={<HomePage />} />
-          <Route path="/myaccount" element={<MyAccount />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/product" element={<Products />}>
-            <Route path=":searchData/*" element={<Products />} />
+      <AuthContext.Provider>
+        <Routes>
+          <Route path="/" element={<RouterHome />}>
+            <Route index element={<HomePage />} />
+            <Route path="/myaccount" element={<MyAccount />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/product" element={<Products />}>
+              <Route path=":searchData/*" element={<Products />} />
+            </Route>
+            <Route path="/view/:id" element={<View />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/otp_verification" element={<OTP_Verification />} />
+            <Route path="/gallery" element={<Gallery />}>
+              <Route path=":galleryData" element={<Gallery />}></Route>
+            </Route>
           </Route>
-          <Route path="/view/:id" element={<View />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/otp_verification" element={<OTP_Verification />} />
-        </Route>
-        <Route path="*" element={<Error />} />
-      </Routes>
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </AuthContext.Provider>
     </div>
   );
 }

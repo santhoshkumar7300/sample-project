@@ -42,7 +42,11 @@ export default function FooterSecond() {
                     Products
                   </Link>
                 </li>
-                <li>Gallery</li>
+                <li>
+                  <Link className={Styles.linkStyle} to="/gallery">
+                    Gallery
+                  </Link>
+                </li>
                 <li>Wishlist</li>
                 <li>
                   <Link className={Styles.linkStyle} to="/myaccount">

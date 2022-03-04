@@ -121,7 +121,7 @@ export default function SignUp() {
             </p>
             <div className={Styles.formDiv}>
               <Form onSubmit={formik.handleSubmit}>
-                <Row className="mb-3" className={Styles.formOverallDiv}>
+                <Row className={Styles.formOverallDiv}>
                   <Form.Group
                     as={Col}
                     onChange={formik.handleChange}
@@ -289,7 +289,7 @@ export default function SignUp() {
               <hr></hr>
               <ul>
                 <li className={Styles.liStyle}>
-                  <Link className={Styles.LinkStyle} to="/signIn">
+                  <Link className={Styles.LinkStyle} to="/myaccount">
                     Sign In
                   </Link>
                 </li>

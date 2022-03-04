@@ -1,0 +1,74 @@
+.overallFirstDiv {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.linkStyle {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+.firstDivImg {
+  width: 20px;
+  color: #d6d4d4;
+}
+.spanStyle {
+  color: #c4c4c4;
+}
+.leftContent {
+  width: 18%;
+  float: left;
+}
+.overallContentDiv {
+  width: 100%;
+  float: left;
+  padding: 0 30px;
+}
+.rightContent {
+  width: 82%;
+  float: left;
+}
+.leftHeading {
+  margin: unset;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+.leftOptions {
+  padding: 15px 0;
+  margin: unset;
+}
+.hrStyle {
+  width: 200px;
+  height: 2px;
+  background: #ffcc21;
+  margin-bottom: 20px;
+  margin-top: 8px;
+}
+.photoGalleryBtn {
+  padding: 8px 17px;
+  border-radius: 7px;
+  border: none;
+  background-color: #f8f8f8;
+  margin-right: 15px;
+}
+.photoGalleryBtn :active,
+.videoGalleryBtn :active {
+  background-color: #ffcc21;
+}
+.videoGalleryBtn {
+  padding: 8px 17px;
+  border-radius: 7px;
+  border: none;
+  background-color: #f8f8f8;
+}
+.imgStyle {
+  width: 387px;
+  border-radius: 15px;
+  height: 260px;
+  margin: 20px 15px 15px 15px;
+}
+.iframeStyle {
+  width: 50%;
+  height: 395px;
+  padding: 15px 15px;
+}

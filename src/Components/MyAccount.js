@@ -1,8 +1,40 @@
 import { Link } from "react-router-dom";
 import Styles from "../Styles/MyAccountStyle.module.css";
 import rightArrow from "../images/rightArrow.png";
+import { useContext, useState } from "react";
+import { login } from "../Api/ApiData";
+import { AuthContext } from "../App";
+import { SetCookie } from "./Utility";
+// import { sha1 } from "react-sha1";
 
 export default function MyAccount() {
+  const AuthContext = useContext(AuthContext);
+
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  });
+
+  console.log(loginData);
+
+  const loginHandle = () => {
+    let formdata = new FormData();
+    formdata.append(
+      "authcode",
+      sha1("ik7sj5d@Pgk*LO7!e4ubz&8b" + "1234567890" + loginData.username)
+    );
+    formdata.append("username", loginData.username);
+    formdata.append("password", loginData.password);
+    formdata.append("device_type", 1);
+    formdata.append("device_id", "1234567890");
+    login(formdata)
+      .then((res) => {
+        if (res.data.status === 1) {
+          SetCookie("credential", JSON.stringify(res.data.token), 7);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <div>
@@ -55,6 +87,9 @@ export default function MyAccount() {
                 className={Styles.inputStyle}
                 type={"text"}
                 placeholder="Email ID / Mobile Number"
+                onChange={(e) =>
+                  setLoginData({ ...loginData, username: e.target.value })
+                }
               ></input>
               <label>
                 Password <span className={Styles.requriedSpan}>*</span>{" "}
@@ -63,6 +98,9 @@ export default function MyAccount() {
                 className={Styles.inputStyle}
                 type={"password"}
                 placeholder="Password"
+                onChange={(e) =>
+                  setLoginData({ ...loginData, password: e.target.value })
+                }
               ></input>
             </form>
             <button className={Styles.continueBtn}>Sign In</button>
@@ -72,7 +110,11 @@ export default function MyAccount() {
             <hr></hr>
             <ul>
               <li className={Styles.liStyle}>
-                <Link className={Styles.LinkStyle} to="/signIn">
+                <Link
+                  onClick={loginHandle}
+                  className={Styles.LinkStyle}
+                  to="/myaccount"
+                >
                   Sign In
                 </Link>
               </li>

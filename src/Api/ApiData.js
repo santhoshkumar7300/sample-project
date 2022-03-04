@@ -55,3 +55,12 @@ export function removeCart(data) {
 export function emptyCart(data) {
   return axios.post("http://cbe.themaestro.in/ksnm/webservice/emptycart", data);
 }
+export function gallery(data) {
+  return axios.post(
+    "http://cbe.themaestro.in/ksnm/webservice/galleryitems",
+    data
+  );
+}
+export function login(data) {
+  return axios.post("http://cbe.themaestro.in/ksnm/webservice/login", data);
+}
