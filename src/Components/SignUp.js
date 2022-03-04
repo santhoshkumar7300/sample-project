@@ -7,10 +7,13 @@ import * as Yup from "yup";
 import { signup } from "../Api/ApiData";
 import { signupMsg } from "../ReduxAction/Action";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import Loader from "../Loader/Loader";
 
 export default function SignUp() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -49,6 +52,7 @@ export default function SignUp() {
           reset: "dfdgfhd44575v7",
         },
       });
+      setLoader(true);
       let formdata = new FormData();
       formdata.append("first_name", values.firstname);
       formdata.append("last_name", values.lastname);
@@ -79,6 +83,7 @@ export default function SignUp() {
 
   return (
     <div>
+      {loader ? <Loader /> : null}
       {/* Title div */}
       <div>
         <div className={Styles.overallFirstDiv}>

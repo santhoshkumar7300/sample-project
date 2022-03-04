@@ -1,29 +1,31 @@
 const initialValues = {
   cardDetails: [],
-  cartCount: 0,
   signup: "",
 };
+
+// const handleCart = (state, action) => {
+//   // console.log(action);
+//   // console.log({
+//   //   ...state,
+//   //   cardDetails: [...state.cardDetails, action.data],
+//   // });
+//   return {
+//     ...state,
+//     cardDetails: [...state.cardDetails, action.data],
+//   };
+// };
 
 export default function ReduxReducer(state = initialValues, action) {
   switch (action.type) {
     case "ADD_CART": {
+      console.log(action.data);
       return {
         ...state,
-        cardDetails: [...state.cardDetails, action.data],
+        cardDetails: [...action.data],
       };
     }
-    case "CART_COUNT": {
-      return {
-        ...state,
-        cartCount: state.cartCount + action.data,
-      };
-    }
-    case "SIGN_UP": {
-      return {
-        ...state,
-        signup: action.data,
-      };
-    }
+
+    default:
+      return state;
   }
-  return state;
 }

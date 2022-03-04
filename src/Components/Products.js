@@ -1,29 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Styles from "../Styles/ProductsStyle.module.css";
 import rightArrow from "../images/rightArrow.png";
 import cardImg from "../images/card.jpg";
 import { useEffect, useState } from "react";
 import CardDesign from "./CardDesign";
 import { productlist } from "../Api/ApiData";
+import CardData from "../Components/CardData";
+import { toast } from "react-toastify";
 
 export default function Products() {
   const [productData, setProductData] = useState([]);
-
+  const [nameSort, setNameSort] = useState("");
+  let params = useParams();
+  let navigate = useNavigate();
+  console.log(params);
   useEffect(() => {
     let formdata = new FormData();
     formdata.append("unique_id", "1234567890");
+    if (params?.searchData) formdata.append("searchkey", params.searchData);
+    // formdata.append("name", nameSort);
     productlist(formdata)
       .then((res) => {
         if (res.data.status === 1) {
           setProductData(res.data.product_list);
         } else {
-          alert(res.data.msg);
+          setProductData([]);
+          toast(res.data.msg);
         }
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params]);
+
   const ProductList = [
     "All Products",
     "Rain Hose / Rain Pipe",
@@ -50,6 +59,8 @@ export default function Products() {
     "Rain Hose & Fittings / 63 mm",
   ];
 
+  console.log(nameSort);
+
   return (
     <div>
       <div>
@@ -74,17 +85,16 @@ export default function Products() {
             <h4 className={Styles.h4Style}>Products</h4>
             <ul>
               {ProductList.map((e, index) => (
-                <li>{e}</li>
+                <li onClick={() => navigate(`/product/${e}`)}>{e}</li>
               ))}
             </ul>
             <h4 className={Styles.h4Style}>Rain Hose</h4>
             <ul>
               {RainHoseList.map((e) => (
-                <li>{e}</li>
+                <li onClick={() => navigate(`/product/${e}`)}>{e}</li>
               ))}
             </ul>
           </div>
-
           {/* Right Side Content */}
           <div className={Styles.rightDropdownDiv}>
             <div className={Styles.rightHeader}>
@@ -95,7 +105,11 @@ export default function Products() {
                 <label className={Styles.labelStyle} for="ProductSorting">
                   Sort by:
                 </label>
-                <select name="productSort" id="productSort">
+                <select
+                  name="productSort"
+                  id="productSort"
+                  onChange={(e) => setNameSort(e.target.value)}
+                >
                   <option value="">Default</option>
                   <option value="name(A-Z)">Name (A-Z)</option>
                   <option value="name(Z-A)">Name (Z-A)</option>
@@ -118,7 +132,11 @@ export default function Products() {
                 </select>
               </div>
             </div>
-            <CardDesign cardData={productData} />
+            {productData.length >= 1 ? (
+              <CardData cardData={productData} />
+            ) : (
+              <div className={Styles.searchDataResult}>No Result Found</div>
+            )}
           </div>
         </div>
       </div>

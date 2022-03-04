@@ -1,44 +1,62 @@
 import { Link } from "react-router-dom";
 import Styles from "../Styles/CartStyle.module.css";
 import rightArrow from "../images/rightArrow.png";
-import CloseIcon from "../images/close_icon.svg";
 import checkIcon from "../images/check_circle.svg";
 import tableImage from "../images/tableImage.jpg";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addtocart, cartlist } from "../Api/ApiData";
+import { addtocart, cartlist, emptyCart, removeCart } from "../Api/ApiData";
 import { setCart } from "../ReduxAction/Action";
+import CartTableData from "./CartTableData";
+import { toast } from "react-toastify";
+
 export default function Cart() {
-  const [count, setCount] = useState(1);
-  let dispatch = useDispatch();
   let selector = useSelector((state) => state.cardDetails);
-  console.log(selector, "cart");
+  let dispatch = useDispatch();
+  const [list, setList] = useState([]);
+  const deleteHandle = (data) => {
+    let formdata = new FormData();
+    formdata.append("unique_id", "1234567890");
+    formdata.append("product_id", data.product_id);
+    removeCart(formdata)
+      .then((res) => {
+        if (res.data.status === 1) {
+          let filterData = selector.filter(
+            (e) => e.product_id !== data.product_id
+          );
+          dispatch(setCart(filterData));
+        } else {
+          toast(res.data.msg);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     let formdata = new FormData();
-    formdata.append("unique_id", "123456");
+    formdata.append("unique_id", "1234567890");
     cartlist(formdata)
       .then((res) => {
-        dispatch(setCart(res));
+        dispatch(setCart(res.data.cartlist));
+        setList(res.data.totalslist);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   }, []);
 
-  const add_num_handle = () => {
-    setCount(count + 1);
-    console.log(count);
+  const EmptyCartHandle = () => {
+    let formdata = new FormData();
+    formdata.append("unique_id", "1234567890");
+    emptyCart(formdata)
+      .then((res) => {
+        if (res.data.status === 1) {
+          dispatch(setCart([]));
+          toast(res.data.msg);
+        } else {
+          toast(res.data.msg);
+        }
+      })
+      .catch((err) => console.log(err));
   };
-
-  const minus_num_handle = () => {
-    setCount(count - 1);
-    console.log(count);
-    if (count === 1) {
-      setCount(1);
-    }
-  };
-
   return (
     <div>
       <div className={Styles.overallFirstDiv}>
@@ -59,61 +77,27 @@ export default function Cart() {
         <div className={Styles.SecondContentDiv}>
           <div className={Styles.secondTitleDiv}>
             <h4 className={Styles.h4Style}>Shopping Cart</h4>
-            <button className={Styles.emptyBtnStyle}>Empty Cart</button>
+            <button onClick={EmptyCartHandle} className={Styles.emptyBtnStyle}>
+              Empty Cart
+            </button>
           </div>
           <div className={Styles.totalContentContainer}>
             <div className={Styles.tableContainer}>
               <table>
                 <thead>
                   <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Subtotal</th>
+                    <th style={{ textAlign: "unset" }}>Product</th>
+                    <th style={{ textAlign: "unset" }}>Price</th>
+                    <th style={{ textAlign: "unset" }}>Qty</th>
+                    <th style={{ textAlign: "unset" }}>Subtotal</th>
                   </tr>
                 </thead>
-
-                {selector &&
-                  selector.map((e, index) => (
-                    <tbody>
-                      <tr>
-                        <td className={Styles.firstTableData}>
-                          <img src={CloseIcon} alt="close"></img>
-                          <img
-                            className={Styles.tableImageStyle}
-                            src={e.cardimg}
-                            alt="product-image"
-                          ></img>
-                          <span className={Styles.tableSpanStyle}>
-                            {e.cardTitle}
-                          </span>
-                        </td>
-                        <td style={{ paddingLeft: "20px" }}>
-                          <span>{e.cardRate}</span>
-                        </td>
-                        <td>
-                          <div className={Styles.tableQtyDiv}>
-                            <button
-                              onClick={minus_num_handle}
-                              className={Styles.tableQtyBtnStyle}
-                            >
-                              -
-                            </button>
-                            <span style={{ alignSelf: "center" }}>{count}</span>
-                            <button
-                              onClick={add_num_handle}
-                              className={Styles.tableQtyBtnStyle}
-                            >
-                              +
-                            </button>
-                          </div>
-                        </td>
-                        <td style={{ paddingLeft: "20px" }}>
-                          <span>₹3900.00</span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
+                <tbody>
+                  {selector &&
+                    selector.map((e, index) => (
+                      <CartTableData e={e} deleteHandle={deleteHandle} />
+                    ))}
+                </tbody>
               </table>
             </div>
 
@@ -123,39 +107,27 @@ export default function Cart() {
               </div>
               <div className={Styles.resultContainer}>
                 <div className={Styles.resultDetailsDiv}>
-                  <span className={Styles.resultSpan}>
-                    Subtotal <span>₹3482.14</span>
-                  </span>
+                  {list.map((e, index) => (
+                    <div>
+                      {index === 1 ? (
+                        <div className={Styles.resultDetailsDiv}>
+                          <div>
+                            <span>Shipping</span>
+                            <p style={{ margin: "0" }}>
+                              <img src={checkIcon} alt="check"></img>
+                              <span>Free Shipping</span>
+                            </p>
+                          </div>
+                          <hr></hr>
+                        </div>
+                      ) : null}
+                      <span className={Styles.resultSpan}>
+                        {e.title} <span>{e.value}</span>
+                      </span>
+                      <hr></hr>
+                    </div>
+                  ))}
                 </div>
-                <hr></hr>
-                <div className={Styles.resultDetailsDiv}>
-                  <div>
-                    <span>Shipping</span>
-                    <p style={{ margin: "0" }}>
-                      <img src={checkIcon} alt="check"></img>
-                      <span>Free Shipping</span>
-                    </p>
-                  </div>
-                </div>
-                <hr></hr>
-                <div className={Styles.resultDetailsDiv}>
-                  <span className={Styles.resultSpan}>
-                    CGST @ 6% <span>₹208.93</span>
-                  </span>
-                </div>
-                <hr></hr>
-                <div className={Styles.resultDetailsDiv}>
-                  <span className={Styles.resultSpan}>
-                    SGST @ 6% <span>₹208.93</span>
-                  </span>
-                </div>
-                <hr></hr>
-                <div className={Styles.resultDetailsDiv}>
-                  <span className={Styles.resultSpan}>
-                    Total <span>₹3900.00 </span>
-                  </span>
-                </div>
-                <hr></hr>
                 <button className={Styles.resultBtn}>
                   Proceed to Checkout
                 </button>

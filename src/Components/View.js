@@ -6,11 +6,60 @@ import shareWhatsapp from "../images/Sharewhatsapp.jpeg";
 import shareTwitter from "../images/Sharetwitter.svg";
 import shareYoutube from "../images/Shareyoutube.svg";
 import { Tab, Tabs } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import rightArrow from "../images/rightArrow.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { addtowishlist, productlist, viewProduct } from "../Api/ApiData";
+import { toast } from "react-toastify";
 export default function View() {
   const [bottomData, setBottomData] = useState();
+  const [productView, setProductView] = useState(null);
+  const [productViewCount, setProductViewCount] = useState(0);
+  const param = useParams();
+  console.log(param);
+
+  useEffect(() => {
+    let formData = new FormData();
+    formData.append("product_id", param.id);
+    formData.append("unique_id", "1234567890");
+    viewProduct(formData)
+      .then((res) => {
+        if (res.data.status === 1) {
+          setProductView(res.data.product_details);
+        } else {
+          toast(res.data.msg);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(productView);
+
+  const addCount = () => {
+    setProductViewCount(productViewCount + 1);
+  };
+
+  const minusCount = () => {
+    setProductViewCount(productViewCount - 1);
+    if (productViewCount === 1) {
+      setProductViewCount(1);
+    }
+  };
+
+  const WishListHandle = () => {
+    let formdata = new FormData();
+    formdata.append("token", "1234567890");
+    formdata.append("product_id", param.id);
+    addtowishlist(formdata)
+      .then((res) => {
+        if (res.data.status === 1) {
+          toast(res.data.msg);
+        } else {
+          toast(res.data.msg);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const ProductList = [
     "All Products",
@@ -88,138 +137,156 @@ export default function View() {
         </div>
 
         {/* Right Side */}
-        <div className={Styles.imgDiv}>
-          <div>
-            <img className={Styles.img} src={cardViewImg} alt="card img"></img>
-          </div>
-          <div className={Styles.rightContentDiv}>
-            <span className={Styles.topSpan}>
-              Round plain-1100 / 16 mm / 100 meter
-            </span>
-            <hr className={Styles.hrStyle}></hr>
-            <div className={Styles.rightContentSecondDiv}>
-              <h5>
-                <span>
-                  <span style={{ fontWeight: "normal" }}>Product Code :</span>{" "}
-                  <span>1318</span>
-                </span>
-              </h5>
-              <h5 className={Styles.h5Style}>
-                <span>
-                  <span style={{ fontWeight: "normal" }}>Availability :</span>{" "}
-                  <span>In stock</span>
-                </span>
-              </h5>
-            </div>
-            <hr></hr>
-            <h2 className={Styles.h2Style}>₹1100.00</h2>
-            <hr></hr>
-            <div className={Styles.rightOverallSecondDiv}>
-              <span className={Styles.qtySpan}>Qty :</span>
-              <div className={Styles.tableQtyDiv}>
-                <button className={Styles.tableQtyBtnStyle}>-</button>
-                <span style={{ alignSelf: "center" }}>0</span>
-                <button className={Styles.tableQtyBtnStyle}>+</button>
+        {productView !== null ? (
+          <>
+            <div className={Styles.imgDiv}>
+              <div>
+                <img
+                  className={Styles.img}
+                  src={productView.img_path}
+                  alt="card img"
+                ></img>
               </div>
+              <div className={Styles.rightContentDiv}>
+                <span className={Styles.topSpan}>{productView.name}</span>
+                <hr className={Styles.hrStyle}></hr>
+                <div className={Styles.rightContentSecondDiv}>
+                  <h5>
+                    <span>
+                      <span style={{ fontWeight: "normal" }}>
+                        Product Code :
+                      </span>{" "}
+                      <span>{productView.hsn_code}</span>
+                    </span>
+                  </h5>
+                  <h5 className={Styles.h5Style}>
+                    <span>
+                      <span style={{ fontWeight: "normal" }}>
+                        Availability :
+                      </span>{" "}
+                      <span
+                        style={{
+                          color: productView.status === 1 ? "#000" : "red",
+                        }}
+                      >
+                        {productView.status === 1 ? "In Stock" : "Out of Stock"}
+                      </span>
+                    </span>
+                  </h5>
+                </div>
+                <hr></hr>
+                <h2 className={Styles.h2Style}>{productView.price}</h2>
+                <hr></hr>
+                <div className={Styles.rightOverallSecondDiv}>
+                  <span className={Styles.qtySpan}>Qty :</span>
+                  <div className={Styles.tableQtyDiv}>
+                    <button
+                      onClick={minusCount}
+                      className={Styles.tableQtyBtnStyle}
+                    >
+                      -
+                    </button>
+                    <span style={{ alignSelf: "center" }}>
+                      {productViewCount}
+                    </span>
+                    <button
+                      onClick={addCount}
+                      className={Styles.tableQtyBtnStyle}
+                    >
+                      +
+                    </button>
+                  </div>
 
-              <button className={Styles.updateBtn}>Update Cart</button>
-              <span className={Styles.heartDiv}>
-                <img className={Styles.heartImg} src={heart} alt="heart"></img>
-                <span style={{ paddingLeft: "6px" }}>Add to Wishlist</span>
-              </span>
-            </div>
+                  <button className={Styles.updateBtn}>Update Cart</button>
+                  <span className={Styles.heartDiv} onClick={WishListHandle}>
+                    <img
+                      className={Styles.heartImg}
+                      src={heart}
+                      alt="heart"
+                    ></img>
+                    <span style={{ paddingLeft: "6px" }}>Add to Wishlist</span>
+                  </span>
+                </div>
 
-            <div>
-              <p>
-                Drip laterals are produced from special grade virgin poly
-                ethylene mixture. The laterals are protected against UV
-                degradation ensuring longer life. Smooth inner space reduces
-                frictional losses.{" "}
-              </p>
-            </div>
+                <div>
+                  <p>{productView.short_description}</p>
+                </div>
 
-            <div>
-              <span style={{ float: "left" }}>Share with :</span>
-              <img
-                className={Styles.shareIcons}
-                src={shareWhatsapp}
-                alt="whatsapp"
-              ></img>
-              <img
-                className={Styles.shareIcons}
-                src={shareYoutube}
-                alt="youtube"
-              ></img>
-              <img
-                className={Styles.shareIcons}
-                src={shareFacebook}
-                alt="facebook"
-              ></img>
-              <img
-                className={Styles.shareIcons}
-                src={shareTwitter}
-                alt="twitter"
-              ></img>
+                <div>
+                  <span style={{ float: "left" }}>Share with :</span>
+                  <img
+                    className={Styles.shareIcons}
+                    src={shareWhatsapp}
+                    alt="whatsapp"
+                  ></img>
+                  <img
+                    className={Styles.shareIcons}
+                    src={shareYoutube}
+                    alt="youtube"
+                  ></img>
+                  <img
+                    className={Styles.shareIcons}
+                    src={shareFacebook}
+                    alt="facebook"
+                  ></img>
+                  <img
+                    className={Styles.shareIcons}
+                    src={shareTwitter}
+                    alt="twitter"
+                  ></img>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={Styles.rightBottomDiv}>
-          <Tabs
-            defaultActiveKey="home"
-            transition={true}
-            id="noanim-tab-example"
-            className="mb-3"
-            onSelect={(e) => setBottomData(e)}
-          >
-            <Tab eventKey="home" title="Description">
-              <p className={Styles.rightBottomPara}>
-                FLAT INLINE is flexible drip lateral tube. Thickness is 200
-                Micron / 0.2 mm / 8 mil.Diameter - 16 mm. Discharge - 4 LPH.
-                Dripper Spacing - 40 cm
-              </p>
-            </Tab>
-            <Tab eventKey="profile" title="Specification">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Specification</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Wall Thickness</td>
-                    <td>200 micorn</td>
-                  </tr>
-                  <tr>
-                    <td>Diameter</td>
-                    <td>16 mm</td>
-                  </tr>
-                  <tr>
-                    <td>Drip Hole Spacing</td>
-                    <td>40 mm</td>
-                  </tr>
-                  <tr>
-                    <td>Laying Length</td>
-                    <td>40 meter</td>
-                  </tr>
-                </tbody>
-                <thead>
-                  <tr>
-                    <th>General</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Expected Life</td>
-                    <td>2 to 3 years</td>
-                  </tr>
-                </tbody>
-              </table>
-            </Tab>
-          </Tabs>
-        </div>
+            <div className={Styles.rightBottomDiv}>
+              <Tabs
+                defaultActiveKey="home"
+                transition={true}
+                id="noanim-tab-example"
+                className="mb-3"
+                onSelect={(e) => setBottomData(e)}
+              >
+                <Tab eventKey="home" title="Description">
+                  <p className={Styles.rightBottomPara}>
+                    {productView.short_description}
+                  </p>
+                </Tab>
+                <Tab eventKey="profile" title="Specification">
+                  <table>
+                    <thead>
+                      {productView.product_attributes.map((e) => (
+                        <tr>
+                          <th>{e.title}</th>
+                          <th></th>
+                        </tr>
+                      ))}
+                    </thead>
+                    <tbody>
+                      {productView.product_attributes.map((e) => (
+                        <tr>
+                          <td>{e.content}</td>
+                          <td>200 micorn</td>
+                        </tr>
+                      ))}
+                    </tbody>
+
+                    <thead>
+                      <tr>
+                        <th>General</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Expected Life</td>
+                        <td>2 to 3 years</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </Tab>
+              </Tabs>
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   );

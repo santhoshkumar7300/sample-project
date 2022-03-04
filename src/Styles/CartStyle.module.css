@@ -53,6 +53,7 @@
   width: 335px;
   float: left;
   display: flex;
+  border: unset;
 }
 .tableQtyDiv {
   width: 70px;

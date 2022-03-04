@@ -105,6 +105,9 @@
   align-self: center;
   padding-left: 20px;
 }
+.heartDiv:hover {
+  cursor: pointer;
+}
 .wishlistSpan {
   float: left;
   align-self: center;

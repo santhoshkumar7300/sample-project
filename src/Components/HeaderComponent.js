@@ -18,12 +18,16 @@ import searchIcon from "../images/search.png";
 import discountIcon from "../images/discount.svg";
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import Cart from "./Cart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function HeaderComponent() {
-  let CartCount = useSelector((state) => state.cartCount);
+  let CartCount = useSelector((state) => state.cardDetails);
   console.log(CartCount);
+  let navigate = useNavigate();
+
+  const [searchData, setSearchData] = useState("");
 
   const ProductList = [
     "Rain Hose / Rain Pipe",
@@ -72,6 +76,11 @@ export default function HeaderComponent() {
     "Drum Seeder / Cono Weeder",
   ];
 
+  const searchDataHandle = () => {
+    navigate(`/product/${searchData}`);
+  };
+
+  console.log(searchData);
   return (
     <div>
       {/* Header First Div */}
@@ -305,7 +314,7 @@ export default function HeaderComponent() {
                           alt="cartlogo"
                         ></img>
                         <span className={Styles.cartSpanStyle}>
-                          {CartCount}
+                          {CartCount.length}
                         </span>
                       </div>
                       <Link
@@ -343,10 +352,17 @@ export default function HeaderComponent() {
                 </DropdownButton>
               </div>
               <div className={Styles.searchBox}>
-                <input type={"text"} placeholder="Search Products"></input>
+                <input
+                  type={"text"}
+                  onChange={(e) => setSearchData(e.target.value)}
+                  placeholder="Search Products"
+                ></input>
               </div>
               <div className={Styles.searchBoxBtn}>
-                <button className={Styles.searhBtnStyle}>
+                <button
+                  className={Styles.searhBtnStyle}
+                  onClick={searchDataHandle}
+                >
                   <span>
                     <img
                       src={searchIcon}

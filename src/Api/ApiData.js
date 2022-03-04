@@ -27,3 +27,31 @@ export function resendotpverify(data) {
     data
   );
 }
+
+export function viewProduct(data) {
+  return axios.post(
+    "http://cbe.themaestro.in/ksnm/webservice/productdetails",
+    data
+  );
+}
+export function addtowishlist(data) {
+  return axios.post(
+    "http://cbe.themaestro.in/ksnm/webservice/addtowishlist",
+    data
+  );
+}
+export function removewishlist(data) {
+  return axios.post(
+    "http://cbe.themaestro.in/ksnm/webservice/removefromwishlist",
+    data
+  );
+}
+export function removeCart(data) {
+  return axios.post(
+    "http://cbe.themaestro.in/ksnm/webservice/removefromcart",
+    data
+  );
+}
+export function emptyCart(data) {
+  return axios.post("http://cbe.themaestro.in/ksnm/webservice/emptycart", data);
+}
